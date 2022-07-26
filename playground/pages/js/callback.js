@@ -12,12 +12,3 @@ function printEnd() {
 }
 
 timeOut(printEnd)
-
-
-const arr = [1,2, 3,4,5]
-
-const newArr = arr.map(elem =>{
-return elem*elem
-})
-
-console.log(newArr)
