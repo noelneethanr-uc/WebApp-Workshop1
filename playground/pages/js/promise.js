@@ -1,3 +1,14 @@
+class Bulb {
+    constructor (img, statusText) {
+        this.img = img;
+        this.statusText = statusText;
+    }
+
+    
+
+
+}
+
 const image = document.getElementById('myImage');
 const statusText = document.getElementById('bulb-status');
 
