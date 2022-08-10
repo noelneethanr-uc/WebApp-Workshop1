@@ -2,12 +2,14 @@
 //     return "I am JS";
 // } 
 
+// console.log(asyncPromise())
+
 // asyncPromise().then(function(data){
 //     console.log(data)
 // });
 
 async function returnPromises() {
-    var data =  new Promise((resolve) => {
+    return  new Promise((resolve) => {
       setTimeout(() => {
         console.log("Promise Executed...");
         resolve("Sample Data");
@@ -15,9 +17,9 @@ async function returnPromises() {
     });
   }
   
-function ExecuteFunction() {
+async function ExecuteFunction() {
     var newData = "UniCourt";
-    var getPromise = returnPromises();
+    var getPromise = await returnPromises();
     console.log(newData);
     console.log(getPromise);
 

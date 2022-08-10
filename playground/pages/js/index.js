@@ -1,6 +1,6 @@
 console.log("Start ...");
 
-setTimeout(function cb(){
+setTimeout(function(){
     console.log("Hello I am Javascript...")
 }, 3000);
 
