@@ -89,7 +89,7 @@ class Server {
           const data = holidayInfoResponse.data;
 
           /**
-           * Insert holiday list into database
+           * TO DO: Insert  all the holiday list into database
            */
           const sqlHolidayInsertQuery = `INSERT INTO holiday
          (country_id, holiday_date, local_name, holiday_name, launch_year)

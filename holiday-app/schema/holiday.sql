@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS country (
     CONSTRAINT uq_year_code_together UNIQUE (country_code, holiday_year)
 );
 
+AT, 2017
 -- Foreign table to hold the list of holiday details
 CREATE TABLE IF NOT EXISTS holiday (
     id SERIAL,
