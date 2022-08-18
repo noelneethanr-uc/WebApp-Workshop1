@@ -14,7 +14,7 @@ services:
       - ./src:/home/node_app/src
     ports:
       - 3000:3000
-    command: ["sh", "-c", "npm run build && npm run dev"]
+    command: ["sh", "-c", "while :; do sleep 100 ; done"]
       
   postgres:
     image: postgres:14-alpine
