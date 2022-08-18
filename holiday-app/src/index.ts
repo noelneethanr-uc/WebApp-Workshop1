@@ -1,7 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import axios from "axios";
 import { Pool } from "pg";
-const bodyParser = require("body-parser");
+import { DbCOnfig } from "./config";
+import  bodyParser from 'body-parser';
 class Server {
   private app: express.Application;
   private pool: Pool;
@@ -10,7 +11,6 @@ class Server {
     this.app = express();
     this.portConfig();
     this.parserConfig();
-    this.dbConfig();
     this.routes();
   }
 
@@ -24,25 +24,10 @@ class Server {
     this.app.use(bodyParser.urlencoded({ extended: true }));
   }
 
-  //DB configuration
-  public dbConfig() {
-    this.pool = new Pool({
-      host: process.env["POSTGRES_HOST"],
-      port: parseInt(<string>process.env["POSTGRES_PORT"]),
-      user: process.env["POSTGRES_USER"],
-      password: process.env["POSTGRES_PASSWORD"],
-      database: process.env["POSTGRES_DB"],
-    });
-  }
-
-  public async query(query: string) {
-    return await this.pool.query(query);
-  }
-
   public routes() {
     this.app.get("/", async (req: Request, res: Response) => {
       const sqlQuery: string = "SELECT NOW()";
-      const result = await this.query(sqlQuery);
+      const result = await DbCOnfig.query(sqlQuery);
 
       res.json({
         message: "Express + TypeScript Server",
@@ -50,6 +35,7 @@ class Server {
       });
     });
 
+    
     this.app.get("/country-list", async (req: Request, res: Response) => {
       try {
         const countryUrl: string =
@@ -113,7 +99,7 @@ class Server {
       }
     });
   }
-
+  
   public start() {
     this.app.listen(this.app.get("port"), function () {
       console.log(`⚡️[server]: Server is running at http://localhost:3000`);
@@ -126,3 +112,4 @@ server.start();
 interface ObjectDTO {
   data: object[];
 }
+
