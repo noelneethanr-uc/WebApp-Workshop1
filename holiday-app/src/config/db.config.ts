@@ -17,7 +17,7 @@ class ConfigDb {
     });
   }
 
-  public async query(query: string) {
+  public async query(query: string): Promise<any> {
     return await this.pool.query(query);
   }
 }
